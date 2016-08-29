@@ -26,7 +26,7 @@ Only required for loading the Nashville data (see below).
 ### 2. Python 3.4+
 For package dependencies, see requirements.txt.
 * NB: luigi will not work with Anaconda because its builds are out of date and sometimes the Python path is problematic.
-* NB: If python3 is installed in addition to python2, set an alias in your `.bashrc` file: `alias python='python3'
+* NB: If python3 is installed in addition to python2, set an alias in your `.bashrc` file: `alias python='python3`
 
 ### 3. [Luigi](https://github.com/spotify/luigi)
 
