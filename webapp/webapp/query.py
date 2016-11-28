@@ -4,7 +4,7 @@ import yaml
 from webapp import app
 import os
 
-with open('../default_profile.yaml') as f:
+with open('../charlotte_pd.yaml') as f:
     config = yaml.load(f)
 
 config = {
@@ -87,7 +87,7 @@ def get_models(query_arg):
     query = ("BEGIN; "
              "SELECT public.colpivot(\'test\', \'SELECT * FROM "
              "(SELECT e.model_id, metric || parameter as new_metric, value "
-             "FROM cmpd_2015.results.evaluations e join cmpd_2015.results.models m ON e.model_id=m.model_id "
+             "FROM charlotte_pd.results.evaluations e join charlotte_pd.results.models m ON e.model_id=m.model_id "
              "where run_time >= $${}$$ ) t0 where new_metric NOTNULL and "
              "{}\', "
              "array['model_id'], array['new_metric'],'#.value',null); "
