@@ -1,5 +1,7 @@
 {% extends "_base.html" %}
 {% block content %}
+<script type="text/jsx" src="{{ url_for('static', filename='components/scatter-chart.js') }}"></script>
+
 
 <div class="container center-container">
 <div class="row">
@@ -23,6 +25,9 @@
               <div id="scatter" class="with-3d-shadow with-transitions" >
                 <svg preserveAspectRatio="xMaxYMin"></svg>
               </div>
+              <script type="text/jsx">
+                ReactDOM.render(<ScatterChart />, document.getElementById('scatter'));
+              </script>
             </div>
             <div class="col-lg-4">
               <div class="row">
