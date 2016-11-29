@@ -1,3 +1,30 @@
+var ScatterChart = React.createClass({
+    getInitialState: function() {
+      return { data: randomData(2, 40) };
+    },
+    render: function() {
+      return (
+        <div>
+          {
+            React.createElement(NVD3Chart, {
+                              type:"scatterChart",
+                              datum: this.state.data,
+                              containerStyle:{ width: "700px", height: "500px" },
+                              options:{ showDistX: true,
+                                        showDistY: true,
+                                        duration: 500,
+                                        xAxis: { tickFormat: d3.format('.02f') },
+                                        yAxis: { tickFormat: d3.format('.02f') },
+                                        color: d3.scale.category10().range()
+                                      }
+                                    }
+                                )
+          }
+        </div>
+      );
+    }
+  });
+
 function randomData(groups, points) { //# groups,# points per group
   var data = [],
       random = d3.random.normal();
@@ -20,27 +47,3 @@ function randomData(groups, points) { //# groups,# points per group
 
   return data;
 }
-
-var ScatterChart = React.createClass({
-    getInitialState: function() {
-      return { data: randomData(2, 40) };
-    },
-    handleClick: function() {
-      this.setState({ data: randomData(2, 40) });
-    },
-    render: function() {
-      return (
-        <div>
-          {
-            React.createElement(NVD3Chart, {
-                              type:"scatterChart",
-                              datum:this.state.data,
-                              containerStyle:{ width: "700px", height: "500px" },
-                              options:{ showDistX: true, showDistY: true, duration: 300, color: d3.scale.category10().range() },
-                              xAxis: { tickFormat: d3.format('.02f')},
-                              yAxis: { tickFormat: d3.format('.02f')},
-                              })}
-        </div>
-      );
-    }
-  });
